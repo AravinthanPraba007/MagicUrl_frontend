@@ -9,6 +9,15 @@ class UserDataService {
             .post(API_URL + "register", { userName, password })
     }
 
+    login(user_name, password) {
+        return axios
+            .post(API_URL + "signIn", { user_name, password })
+            .then((response) => {
+                console.log(response.data)
+                return response.data
+            })
+    }
+
 }
 
 export default new UserDataService()

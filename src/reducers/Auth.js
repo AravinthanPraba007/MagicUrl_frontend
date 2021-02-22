@@ -3,21 +3,14 @@ import {
     REGISTER_FAIL,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT,
-    SET_JWT,
-    CLEAR_JWT
+    LOGOUT
   } from "../actions/Types";
   
-  const user = JSON.parse(localStorage.getItem("user"));
-  const jwt = user ? user.userName : null
   
-  const initialState = user
-    ? { isLoggedIn: true, userName: user.userName }
-    : { isLoggedIn: false, userName: null };
+  const initialState = { isLoggedIn: false, userName: null };
   
   export default function auth(state = initialState, action) {
     const { type, payload } = action;
-  
     switch (type) {
       case REGISTER_SUCCESS:
         return {
@@ -33,7 +26,7 @@ import {
         return {
           ...state,
           isLoggedIn: true,
-          user: payload.user,
+          userName: payload,
         };
       case LOGIN_FAIL:
         return {

@@ -1,16 +1,17 @@
-import React, {useRef, useState} from 'react'
+import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
-import UserDataService from '../services/UserDataService'
+import { Link, useHistory } from "react-router-dom"
 import { connect } from 'react-redux'
 import { register } from "../actions/Auth";
 import { setMessage } from '../actions/Message';
 
-function SignupComponent({ register, setMessage, message, sucess_message}) {
+function SignupComponent({ register, setMessage, message, sucess_message }) {
     const userNameRef = useRef()
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const history = useHistory()
 
     function handleRegister(e) {
         e.preventDefault()
@@ -21,7 +22,7 @@ function SignupComponent({ register, setMessage, message, sucess_message}) {
         setLoading(true)
         register(userNameRef.current.value, passwordRef.current.value)
             .then(() => {
-                // history.push("/");
+                history.push("/login");
             })
             .catch(() => {
                 setLoading(false)
@@ -34,7 +35,7 @@ function SignupComponent({ register, setMessage, message, sucess_message}) {
                 <Card.Body>
                     <h2 className="text-center mb-4">Sign Up</h2>
                     {message && <Alert variant="danger">{message}</Alert>}
-                    {sucess_message && <Alert variant="sucess">{sucess_message}</Alert>}
+                    {sucess_message && <Alert variant="success">{sucess_message}</Alert>}
                     <Form onSubmit={handleRegister}>
                         <Form.Group id="username">
                             <Form.Label>Username</Form.Label>
@@ -53,7 +54,7 @@ function SignupComponent({ register, setMessage, message, sucess_message}) {
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Already have an account? Login
+                Already have a account? <Link to="/login">Log In</Link>
             </div>
         </div>
     )
