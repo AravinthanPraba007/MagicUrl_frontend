@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { register } from "../actions/Auth";
 import { setMessage } from '../actions/Message';
 
-function Signup({ register, setMessage, message, sucess_message}) {
+function SignupComponent({ register, setMessage, message, sucess_message}) {
     const userNameRef = useRef()
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
@@ -64,7 +64,8 @@ const mapStateToProps = state => {
     const { message } = state.message;
     const { sucess_message } = state.sucessMessage;
     return {
-        message
+        message,
+        sucess_message
     };
 }
 
@@ -79,4 +80,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )
-    (Signup)
+    (SignupComponent)
