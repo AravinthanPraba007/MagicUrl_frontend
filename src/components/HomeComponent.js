@@ -20,7 +20,12 @@ function HomeComponent({  generateUrl, isLoggedIn, setMessage, message, sucess_m
             return setMessage('Content cannot be empty')
         }
         setLoading(true)
-        generateUrl(contentRef.current.value, contentTypeRef.current.value, expiryTimeRef.current.value)
+        var user_name=""
+        if(isLoggedIn) 
+            user_name=userName 
+        else
+            user_name=""
+        generateUrl(contentRef.current.value, contentTypeRef.current.value, expiryTimeRef.current.value,user_name)
           .then(() => {
               setShowPopUp(true)
               contentRef.current.value=""
@@ -114,7 +119,7 @@ const mapStateToProps = state => {
   
   const mapDispatchToProps = dispatch => {
     return {
-        generateUrl: (content, contentType, expiryTime) => dispatch(generateUrl(content, contentType, expiryTime)),
+        generateUrl: (content, contentType, expiryTime, user_name) => dispatch(generateUrl(content, contentType, expiryTime, user_name)),
         setMessage: (message) => dispatch(setMessage(message))
     }
   }

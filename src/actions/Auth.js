@@ -106,5 +106,20 @@ export const login = (userName, password) => (dispatch) => {
     );
 };
 
+export const logout = () => (dispatch) => {
+  
+    dispatch({
+      type: CLEAR_MESSAGE,
+    });
+  
+    dispatch({
+        type: CLEAR_SUCESS_MESSAGE,
+      });
+
+    dispatch({
+      type: LOGOUT,
+    });
+  };
+
 
 

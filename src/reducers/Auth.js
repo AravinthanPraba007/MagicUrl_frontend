@@ -32,15 +32,13 @@ import {
         return {
           ...state,
           isLoggedIn: false,
-          user: null,
-          jwt: null
+          user: null
         };
       case LOGOUT:
         return {
           ...state,
           isLoggedIn: false,
-          user: null,
-          jwt: null
+          user: null
         };
 
       default:
