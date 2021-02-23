@@ -11,7 +11,7 @@ class MagicUrlService {
 
     fetchContent(magicId) {
         return axios
-            .get(API_URL + "fetch", { magicId })
+            .get(API_URL + "fetch/"+magicId)
             .then((response) => {
                 console.log(response.data)
                 return response.data

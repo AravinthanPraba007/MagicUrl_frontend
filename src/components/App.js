@@ -3,6 +3,7 @@ import LoginComponent from './LoginComponent';
 import HomeComponent from './HomeComponent';
 import HeaderComponent from './HeaderComponent';
 import DashboardComponent from './DashboardComponent';
+import FetchContentComponent from './FetchContentComponent';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap'
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/signup" exact component={SignupComponent} />
             <Route path="/dashboard" exact component={DashboardComponent} />
             <Route path="/" exact component={HomeComponent} />
+            <Route path="/fetch/:id" children={<FetchContentComponent />} />
           </Switch>
         
       </div>
