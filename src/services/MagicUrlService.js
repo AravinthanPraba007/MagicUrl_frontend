@@ -18,6 +18,15 @@ class MagicUrlService {
             })
     }
 
+    fetchUserMagicUrls(username) {
+        return axios
+            .post(API_URL + "magicUrls",{ username })
+            .then((response) => {
+                console.log(response.data)
+                return response.data
+            })
+    }
+
 }
 
 export default new MagicUrlService()

@@ -3,10 +3,18 @@ import { Navbar, Nav } from "react-bootstrap"
 import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux'
 import { logout } from "../actions/Auth";
+import { clearMessage, clearSucessMessage } from "../actions/Message";
 
-function HeaderComponent({ logout, isLoggedIn }) {
+function HeaderComponent({ logout, isLoggedIn, clearMessage, clearSucessMessage  }) {
+    const history = useHistory()
     function handleLogout() {
-        logout()
+        logout();
+        history.push("/");
+    }
+    function handleRedirectNav(url) {
+        clearSucessMessage();
+        clearMessage();
+        history.push(url);
     }
 
     return (
@@ -17,21 +25,21 @@ function HeaderComponent({ logout, isLoggedIn }) {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#features">API Reference</Nav.Link>
+                        <Nav.Link target={"_blank"} href="https://short-magic-url.herokuapp.com/swagger-ui.html">API Reference</Nav.Link>
                     </Nav>
 
                     <Nav>
-                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link onClick={() => history.push("/") }>Home</Nav.Link>
                         {!isLoggedIn &&
                         <>
-                             <Nav.Link href="/login">Login</Nav.Link>
-                             <Nav.Link href="/signup">SignUp</Nav.Link>
+                             <Nav.Link onClick={() => handleRedirectNav("/login") }>Login</Nav.Link>
+                             <Nav.Link onClick={() => handleRedirectNav("/signup") }>SignUp</Nav.Link>
                         </>
                         }
                         {isLoggedIn &&
                         <>
-                        <Nav.Link href="/" onClick={handleLogout}>Logout</Nav.Link>
-                        <Nav.Link href="/dashboard">DashBoard</Nav.Link>
+                        <Nav.Link onClick={() => history.push("/dashboard") }>DashBoard</Nav.Link>
+                        <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                         </>
                         }
                     </Nav>
@@ -50,7 +58,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: () => dispatch(logout())
+        logout: () => dispatch(logout()),
+        clearSucessMessage: () => dispatch(clearSucessMessage()),
+        clearMessage: () => dispatch(clearMessage())
+
     }
 }
 
