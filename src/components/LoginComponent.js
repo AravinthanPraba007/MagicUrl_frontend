@@ -20,7 +20,7 @@ function LoginComponent({ isLoggedIn, message, sucess_message, login }) {
       })
       .catch(() => {
         setLoading(false)
-        console.log(isLoggedIn)
+        // console.log(isLoggedIn)
       })
     setLoading(false)
   }

@@ -23,16 +23,16 @@ function DashboardComponent({isLoggedIn, userName}) {
                 else
                 setTable(true)
 
-                console.log(showTable)
+                // console.log(showTable)
     
             },
             (error) => {
-                console.log(error.response)
+                // console.log(error.response)
             
             }
         );
         setLoading(false)
-        console.log(showTable)
+        // console.log(showTable)
         }
    
 
@@ -77,7 +77,7 @@ function DashboardComponent({isLoggedIn, userName}) {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state)
     const { isLoggedIn } = state.auth;
     const { userName } = state.auth;
     return {

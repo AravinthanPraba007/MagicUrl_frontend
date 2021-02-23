@@ -102,7 +102,7 @@ function HomeComponent({  generateUrl, isLoggedIn, setMessage, message, sucess_m
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state)
     const { isLoggedIn } = state.auth;
     const { userName } = state.auth;
     const { message } = state.message;

@@ -13,7 +13,7 @@ import MagicUrlService from "../services/MagicUrlService";
 export const generateUrl = (content, content_type, expiry_time, user_name) => (dispatch) => {
     return MagicUrlService.generateUrl(content, content_type, expiry_time, user_name).then(
         (response) => {
-            console.log(response)
+            // console.log(response)
             dispatch({
                 type: GENERATE_URL_SUCCESS,
                 payload: response.data.shortUrl,
@@ -32,7 +32,7 @@ export const generateUrl = (content, content_type, expiry_time, user_name) => (d
             return Promise.resolve();
         },
         (error) => {
-            console.log(error.response)
+            // console.log(error.response)
             const message =
                 (error.response &&
                     error.response.data.response_message) ||

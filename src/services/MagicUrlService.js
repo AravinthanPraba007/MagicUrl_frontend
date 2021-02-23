@@ -9,7 +9,7 @@ class MagicUrlService {
     
 
     generateUrl(content, content_type, expiry_time, user_name) {
-        console.log(FRONTEND_URL);
+        // console.log(FRONTEND_URL);
         var systemUrl = FRONTEND_URL
         return axios
             .post(API_URL + "submit", { content, content_type, expiry_time, user_name, systemUrl })
@@ -28,7 +28,7 @@ class MagicUrlService {
         return axios
             .post(API_URL + "magicUrls",{ username })
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 return response.data
             })
     }

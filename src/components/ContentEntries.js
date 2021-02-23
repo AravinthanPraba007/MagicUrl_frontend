@@ -2,7 +2,7 @@ import React from 'react'
 import { Badge } from "react-bootstrap"
 
 export default function ContentEntries({item}) {
-    console.log(item)
+    // console.log(item)
     return (
         <tr>
         <td>{item.contentType}</td>

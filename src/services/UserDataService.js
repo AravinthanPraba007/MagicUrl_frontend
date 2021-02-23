@@ -13,7 +13,7 @@ class UserDataService {
         return axios
             .post(API_URL + "signIn", { user_name, password })
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 return response.data
             })
     }

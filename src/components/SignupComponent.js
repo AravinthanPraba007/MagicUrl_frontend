@@ -61,7 +61,7 @@ function SignupComponent({ register, setMessage, message, sucess_message }) {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state)
     const { message } = state.message;
     const { sucess_message } = state.sucessMessage;
     return {

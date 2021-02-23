@@ -18,23 +18,23 @@ export default function FetchContentComponent() {
 
     MagicUrlService.fetchContent(magicId).then(
         (response) => {
-            console.log(response)
+            // console.log(response)
             setMessage(response.response_message)
             setContent(response.content)
             setContentType(response.content_type.toUpperCase())
             setSucessAlert(true)
             setErrorAlert(false)
-            console.log(contentType)
-            console.log("sucess" + showSucessAlert)
-            console.log("error" + showErrorAlert)
+            // console.log(contentType)
+            // console.log("sucess" + showSucessAlert)
+            // console.log("error" + showErrorAlert)
         },
         (error) => {
             console.log(error.response)
             setMessage(error.response.data.response_message)
             setErrorAlert(true)
             setSucessAlert(false)
-            console.log("error" + showErrorAlert)
-            console.log("sucess" + showSucessAlert)
+            // console.log("error" + showErrorAlert)
+            // console.log("sucess" + showSucessAlert)
         }
     );
 
