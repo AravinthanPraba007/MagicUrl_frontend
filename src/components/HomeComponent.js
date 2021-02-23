@@ -44,9 +44,9 @@ function HomeComponent({  generateUrl, isLoggedIn, setMessage, message, sucess_m
     return (
         <div className="mp-5px">
             <Alert show={showPopUp} variant="success">
-        <Alert.Heading>Your message has been created!</Alert.Heading>
+        <Alert.Heading>Your Short URL has been created!</Alert.Heading>
         <p>
-          {shortUrl}
+        <a target={"_blank"} href={shortUrl}> {shortUrl} </a>
         </p>
         
         <CopyToClipboard text={shortUrl}

@@ -9,10 +9,10 @@ export default function FetchContentComponent() {
     const [message, setMessage] = useState("");
     const [content, setContent] = useState("");
     const [contentType, setContentType] = useState("");
-
     var path = window.location.pathname
     var split = path.split("/")
     var magicId = split.pop();
+
 
     console.log(magicId)
 
@@ -21,7 +21,7 @@ export default function FetchContentComponent() {
             console.log(response)
             setMessage(response.response_message)
             setContent(response.content)
-            setContentType(response.content_type)
+            setContentType(response.content_type.toUpperCase())
             setSucessAlert(true)
             setErrorAlert(false)
             console.log(contentType)
@@ -38,28 +38,28 @@ export default function FetchContentComponent() {
         }
     );
 
+
     return (
 
-        <div>
+        <div className="text-center">
             <Alert show={showSucessAlert} variant="success">
                 <Alert.Heading className="text-center">{message}</Alert.Heading>
-                <Badge pill variant="primary">
-                {contentType} Shared
+                <Badge pill variant="primary" className="mt-1 mb-1">
+                    <h6>{contentType}   Shared</h6>
                 </Badge>
-                
-                
-                {contentType === "link" &&
-                  <a target={"_blank"} href={content}><h6>{content}</h6></a>
+
+
+                {contentType === "LINK" &&
+                    <a target={"_blank"} href={content}><h6>{content}</h6></a>
                 }
-                {contentType === "message" &&
-                  <h6>{content}</h6>
+                {contentType === "MESSAGE" &&
+                    <h6>{content}</h6>
                 }
-                
-                  
-                 
-                        
-                
-                
+
+
+
+
+
             </Alert>
             <Alert show={showErrorAlert} variant="dark">
                 <Alert.Heading className="text-center">{message}</Alert.Heading>

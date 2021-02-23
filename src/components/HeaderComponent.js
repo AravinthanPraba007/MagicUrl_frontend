@@ -20,7 +20,7 @@ function HeaderComponent({ logout, isLoggedIn, clearMessage, clearSucessMessage 
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand onClick={() => history.push("/") }>
                     Magic URL</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
